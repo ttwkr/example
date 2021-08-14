@@ -1,2 +1,4 @@
 .idea
 *.map
+dist
+node_modules

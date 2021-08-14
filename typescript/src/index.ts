@@ -3,7 +3,7 @@ const name = "Sangjin",
     gender = "male";
 
 const sayHi = (name: string, age: number, gender?: string) => {
-    console.log(`${name} is ${age} and ${gender}`)
+    console.log(`${name} is ${age} and ${gender}!`)
 }
 
 sayHi(name, age, gender)
