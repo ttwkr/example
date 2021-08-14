@@ -5,7 +5,7 @@
     "sourceMap": true
   },
   "include": [
-    "test.ts"
+    "index.ts"
   ],
   "exclude": [
     "node_modules"
