@@ -8,6 +8,7 @@ class Block {
     public timestamp:number
 
     //hash 암호화
+    // class 선언하지 않고 function 사용하려면 static 설정을 해야한다
     static calculateHash = (
         index:string, 
         previousHash:string, 
