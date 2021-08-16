@@ -48,6 +48,13 @@ let blockChain: Block[] = [genericBlock];
 const getBlockchain = (): Block[] => blockChain;
 const getLastestBlock = (): Block => blockChain[blockChain.length - 1];
 const getNewTimeStamp = (): number => Math.round(new Date().getTime() / 1000);
+const getHashForBlock = (aBlock: Block): string =>
+  Block.calculateHash(
+    aBlock.index,
+    aBlock.previousHash,
+    aBlock.data,
+    aBlock.timestamp
+  );
 
 // Block 생성
 const createBlock = (data: string): Block => {
@@ -68,18 +75,32 @@ const createBlock = (data: string): Block => {
     data,
     newTimeStamp
   );
-
+  addBlock(newBlock);
   return newBlock;
 };
 
 const isBlockValid = (previousBlock: Block, candidateBlock: Block): boolean => {
   if (!Block.validateBlock(candidateBlock)) {
     return false;
-  } else if (previousBlock.index + 1 === candidateBlock.index) {
+  } else if (previousBlock.index + 1 !== candidateBlock.index) {
     return false;
-  } else if (previousBlock.hash === candidateBlock.previousHash) {
+  } else if (previousBlock.hash !== candidateBlock.previousHash) {
     return false;
+  } else if (getHashForBlock(candidateBlock) !== candidateBlock.hash) {
+    return false;
+  } else {
+    return true;
   }
 };
 
-console.log(createBlock("hi?"));
+const addBlock = (aBlock: Block): void => {
+  if (isBlockValid(getLastestBlock(), aBlock)) {
+    blockChain.push(aBlock);
+  }
+};
+
+createBlock("first Block");
+createBlock("second Block");
+createBlock("third Block");
+
+console.log(blockChain);
