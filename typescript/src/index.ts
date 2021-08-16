@@ -10,7 +10,7 @@ class Block {
     //hash 암호화
     // class 선언하지 않고 function 사용하려면 static 설정을 해야한다
     static calculateHash = (
-        index:string, 
+        index:number, 
         previousHash:string, 
         data:string, 
         timestamp:number
@@ -34,4 +34,17 @@ let blockChain:Block[] = [genericBlock]
 const getBlockchain = ():Block[] => blockChain
 const getLastestBlock = ():Block => blockChain[blockChain.length - 1]
 const getNewTimeStamp = ():number => Math.round(new Date().getTime() / 1000)
-console.log(blockChain)
+
+// Block 생성
+const createBlock = (data:string): Block => {
+    const previousBlock:Block = getLastestBlock()
+    const newIndex:number = previousBlock.index + 1
+    const newTimeStamp:number = getNewTimeStamp()
+    const newHash:string = Block.calculateHash(newIndex, previousBlock.hash, data, newTimeStamp)
+
+    const newBlock = new Block(newIndex, newHash, previousBlock.hash, data, newTimeStamp)
+
+    return newBlock
+}
+
+console.log(createBlock("hi?"))
