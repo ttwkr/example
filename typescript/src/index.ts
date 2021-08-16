@@ -1,53 +1,21 @@
-interface Human {
-    name : string,
-    age: number,
-    gender: string
-}
+class Block {
+    public index:number
+    public hash:string
+    public previousHash:string
+    public data:string
+    public timestamp:number
 
-//use class 
-class HumanClass {
-    public name: string
-    public age: number
-    public gender: string
-
-    constructor(name: string, age:number, gender:string){
-        this.name = name
-        this.age = age
-        this.gender = gender
+    constructor(index: number, hash:string, previousHash:string, data:string, timestamp:number){
+        this.index = index
+        this.data = data
+        this.hash = hash
+        this.previousHash = previousHash
+        this.timestamp = timestamp
     }
 }
 
-// use interface
-const person = {
-    name : 'Me',
-    age: 11,
-    gender: 'female'
-}
+const genericBlock:Block = new Block(0, "20202020202", "", "hello", 123456)
 
-//use class
-const S = new HumanClass('SSS', 126, 'male')
+let blockChain:[Block] = [genericBlock]
 
-const name = "Sangjin",
-    age = 34,
-    gender = "male";
-
-const sayHi = (name: string, age: number, gender?: string) => {
-    console.log(`${name} is ${age} and ${gender}!`)
-}
-
-// use interface
-const sayBye = (person: Human) => {
-    console.log(`${person.name} is ${person.age} and ${person.gender}!!!`)
-}
-
-//use class
-const sayClass = (person: HumanClass) => {
-    console.log(`${person.name} is ${person.age} and ${person.gender}!!!`)
-}
-
-sayHi(name, age, gender)
-sayBye(person)
-sayClass(S)
-
-
-export {}
+console.log(blockChain)
