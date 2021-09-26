@@ -20,7 +20,7 @@ public class RouletteController : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && isRotate==false)
         {
             this.isRotate = true;
-            this.rotSpeed = 10;
+            this.rotSpeed = 15;
         }
         else if (Input.GetMouseButtonDown(0) && isRotate == true)
         {
