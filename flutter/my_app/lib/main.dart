@@ -4,59 +4,48 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget{
-  @override
-  State<StatefulWidget> createState(){
-    return _MyApp();
-  }
-}
-
-class _MyApp extends State<MyApp> {
-  var switchValue = false;
-  String test = 'hello';
-  Color _color = Colors.amber;
-  // This widget is the root of your application.
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-            primarySwatch: Colors.blue,
-            visualDensity: VisualDensity.adaptivePlatformDensity),
-      darkTheme: ThemeData.light(),
-      home: Scaffold(
-        body: Center(
-          child: ElevatedButton(
-            child: Text('$test'),
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(_color)
-            ),
-            onPressed: () {
-              if(test == 'hello'){
-                setState(() {
-                  test = 'flutter';
-                  _color = Colors.blue;
-                });
-              }
-              else{
-                setState(() {
-                  test = 'hello';
-                  _color = Colors.amber;
-                });
-              }
-            },
+      title: "material Flutter App",
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: MaterialFlutterApp(),
+    );
+  }
+}
+
+class MaterialFlutterApp extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _MaterialFlutterApp();
+  }
+}
+
+class _MaterialFlutterApp extends State<MaterialFlutterApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Material Design App"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: () {},
+      ),
+      body: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Icon(Icons.android),
+              Text('android'),
+              Icon(Icons.add),
+              Text("add")
+            ],
+            mainAxisAlignment: MainAxisAlignment.center,
           ),
-          // -----토글버튼
-          // child: Switch(
-          //   value: switchValue,
-          //   onChanged: (value) {
-          //     setState(() {
-          //       switchValue = value;
-          //     });
-          //   },
-          // )
         ),
-      )
-      );
+      ),
+    );
   }
 }
