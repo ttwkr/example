@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
         } else if (Input.GetMouseButtonUp(0))
         {
             Vector2 endPos = Input.mousePosition;
-            float swipeLength = endPos.x - this.startPos.x;
+            float swipeLength = this.startPos.x - endPos.x ;
             this.speed = swipeLength / 5000.0f;
             if (swipeLength > 0)
             {
