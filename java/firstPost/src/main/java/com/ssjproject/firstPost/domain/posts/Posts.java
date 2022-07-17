@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Getter
 @Entity
 public class Posts {
+    // drf 에서는 model 에 해당함
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

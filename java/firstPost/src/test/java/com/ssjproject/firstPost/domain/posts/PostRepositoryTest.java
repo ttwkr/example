@@ -1,8 +1,6 @@
-package com.ssjproject.firPost.domain.posts;
+package com.ssjproject.firstPost.domain.posts;
 
 import com.ssjproject.firstPost.Application;
-import com.ssjproject.firstPost.domain.posts.Posts;
-import com.ssjproject.firstPost.domain.posts.PostsRepository;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
