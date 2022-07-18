@@ -3,6 +3,8 @@ package com.ssjproject.firstPost.web.dto;
 import com.ssjproject.firstPost.domain.posts.Posts;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class PostsResponseDto {
 
