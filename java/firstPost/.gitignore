@@ -1,6 +1,7 @@
 # Created by https://www.toptal.com/developers/gitignore/api/java,intellij,vim,visualstudiocode,eclipse
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,intellij,vim,visualstudiocode,eclipse
 
+application-oauth.properties
 build/
 ### Eclipse ###
 .metadata
