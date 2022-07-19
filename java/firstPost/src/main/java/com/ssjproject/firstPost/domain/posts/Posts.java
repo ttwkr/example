@@ -1,4 +1,5 @@
 package com.ssjproject.firstPost.domain.posts;
+import com.ssjproject.firstPost.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @Entity
-public class Posts {
+public class Posts extends BaseTimeEntity {
     // drf 에서는 model 에 해당함
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
