@@ -1,6 +1,7 @@
 package com.ssjproject.firstPost.config.auth.dto;
 
-import com.ssjproject.firstPost.domain.user.User;
+import com.ssjproject.firstPost.domain.user.Users;
+import com.ssjproject.firstPost.domain.user.Users;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -11,7 +12,7 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(User user){
+    public SessionUser(Users user){
         this.name = user.getName();
         this.email = user.getEmail();
         this.picture = user.getPicture();

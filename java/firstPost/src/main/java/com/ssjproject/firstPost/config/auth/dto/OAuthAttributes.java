@@ -1,7 +1,7 @@
 package com.ssjproject.firstPost.config.auth.dto;
 
 import com.ssjproject.firstPost.domain.user.Role;
-import com.ssjproject.firstPost.domain.user.User;
+import com.ssjproject.firstPost.domain.user.Users;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -41,8 +41,8 @@ public class OAuthAttributes {
                 .build();
     }
 
-    public User toEntity(){
-        return User.builder()
+    public Users toEntity(){
+        return Users.builder()
                 .name(name)
                 .email(email)
                 .picture(picture)

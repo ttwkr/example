@@ -2,7 +2,7 @@ package com.ssjproject.firstPost.config.auth;
 
 import com.ssjproject.firstPost.config.auth.dto.OAuthAttributes;
 import com.ssjproject.firstPost.config.auth.dto.SessionUser;
-import com.ssjproject.firstPost.domain.user.User;
+import com.ssjproject.firstPost.domain.user.Users;
 import com.ssjproject.firstPost.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -40,18 +40,18 @@ public class CustomOauth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        User user = saveOrUpdate(attributes);
-        httpSession.setAttribute("user", new SessionUser(user));
+        Users users = saveOrUpdate(attributes);
+        httpSession.setAttribute("user", new SessionUser(users));
 
         return new DefaultOAuth2User(
-                Collections.singleton(new SimpleGrantedAuthority(user.getRoleKey())),
+                Collections.singleton(new SimpleGrantedAuthority(users.getRoleKey())),
                 attributes.getAttributes(),
                 attributes.getNameAttributeKey()
         );
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
+    private Users saveOrUpdate(OAuthAttributes attributes) {
+        Users user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
         return userRepository.save(user);
