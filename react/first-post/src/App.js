@@ -1,12 +1,12 @@
 import React from "react";
 import Titles from "./component/main/title"
-// import CreatePost from "./component/post/create";
+import {Link} from "react-router-dom";
 
 const App = () => {
     return (
         <div className="App">
             <Titles/>
-            <button>글등록</button>
+            <Link to="post/save">글 등록</Link>
         </div>
     );
 }

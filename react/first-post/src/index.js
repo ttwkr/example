@@ -2,14 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import {Routes, Route} from 'react-router'
+import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter, Route} from "react-router-dom";
+import CreatePost from "./component/post/create";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <BrowserRouter>
-            <Route path="/" element={<App/>}/>
+            <Routes>
+                <Route path="/" element={<App/>}/>
+                <Route path="post/save" element={<CreatePost/>}/>
+            </Routes>
         </BrowserRouter>
     </React.StrictMode>
 );
