@@ -16,7 +16,7 @@ public class PostsApiController {
 
     private final PostsService postsService;
 
-    @GetMapping("/")
+    @GetMapping("/api/v1/posts")
     public List<PostsResponseDto> list(){
         return postsService.list();
     }
