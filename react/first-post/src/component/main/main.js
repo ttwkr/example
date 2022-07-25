@@ -9,6 +9,9 @@ const Main = () => {
             <Button variant="outline-primary">
                 <Link to="post/save" style={{ textDecoration: 'none' }}>글 등록</Link>
             </Button>
+            <Button variant="outline-primary">
+                <a href="http://localhost:8080/api/v1/posts" style={{ textDecoration: 'none' }}>로그인</a>
+            </Button>
         </div>
     )
 }
