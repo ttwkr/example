@@ -10,7 +10,6 @@ const App = () => {
             <Button variant="outline-primary">
                 <Link to="post/save" style={{ textDecoration: 'none' }}>글 등록</Link>
             </Button>
-
         </div>
     );
 }
