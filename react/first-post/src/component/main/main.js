@@ -1,6 +1,7 @@
 import React from "react";
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import List from "../post/list";
 
 const Main = () => {
     return (
@@ -12,6 +13,7 @@ const Main = () => {
             <Button variant="outline-primary">
                 <a href="http://localhost:8080/api/v1/posts" style={{ textDecoration: 'none' }}>로그인</a>
             </Button>
+            <List/>
         </div>
     )
 }
