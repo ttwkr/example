@@ -7,7 +7,7 @@ const List = () => {
 
     useEffect(() => {
         // post 갖고옴
-        axios.get("http://localhost:8080/api/v1/posts")
+        axios.get("http://localhost:8080/")
             .then(res => setPosts(res.data))
             .catch(err => console.log(err))
     }, [])
@@ -30,7 +30,7 @@ const List = () => {
                             <Post
                                 id={post.id}
                                 title={post.title}
-                                contne={post.content}
+                                content={post.content}
                                 author={post.author}
                             />
                         )
@@ -42,7 +42,7 @@ const List = () => {
     )
 }
 
-const Post = (id, title, content, author) => {
+const Post = ({id, title, content, author}) => {
     return (
         <tr>
             <td>{id}</td>
