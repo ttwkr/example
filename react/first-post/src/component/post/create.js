@@ -1,49 +1,63 @@
 import React, {useState} from "react";
-import {Link} from "react-router-dom";
 import axios from "axios";
-import {Button} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
+import {Link} from "react-router-dom";
 
 const CreatePost = () => {
     const [form, setForm] = useState(
         {
-            title :'',
-            author:'',
-            content:''
+            title: '',
+            author: '',
+            content: ''
         }
     )
 
-    const changeForm = (e) =>{
-        const {name, value} = e.target
+    const changeForm = (e) => {
+        console.log(form)
+        const {id, value} = e.target
         setForm({
             ...form,
-            [name]: value
+            [id]: value
         })
     }
 
-    const submitForm = async (data) => {
+    const submitForm = async () => {
+        console.log(form)
         await axios.post(
             "http://localhost:8080/api/v1/posts",
-            data
+            form
+        ).then(
+            r => console.log(r)
+        ).catch(
+            e => console.log(e)
         )
+
     }
 
     return (
         <div>
-            <h1> 글등록페이지 </h1>
-            <div>
-                <div>
-                    제목 : <input/>
-                </div>
-                <div>
-                    작성자 : <input/>
-                </div>
-                <div>
-                    내용
-                    <textarea/>
-                </div>
-            </div>
-            <Link to="/">home</Link>
-            <Button onClick={submitForm}>등록</Button>
+            <Form onChange={changeForm}>
+                <Form.Group className="mb-3" controlId="title">
+                    <Form.Label>Title</Form.Label>
+                    <Form.Control type="text" placeholder="제목"/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="content">
+                    <Form.Label>Content</Form.Label>
+                    <Form.Control as="textarea" aria-label="With textarea" placeholder="내용"/>
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="author">
+                    <Form.Label>author</Form.Label>
+                    <Form.Control type='email' placeholder="name@example.com"/>
+                </Form.Group>
+            </Form>
+            <Button variant="primary" type="submit" onClick={submitForm}>
+                등록
+            </Button>
+            <Button>
+                <Link to="/" style={{ textDecoration: 'none' }}>뒤로</Link>
+            </Button>
         </div>
     )
 }
