@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests().antMatchers("/", "/css/**", "/images/**",
                         "/js**", "/h2-console/**").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name()).anyRequest().authenticated()
+                .antMatchers("/api/v1/**").hasRole(Role.GUEST.name()).anyRequest().authenticated()
                 .and().logout().logoutSuccessUrl("/")
                 .and().oauth2Login().userInfoEndpoint().userService(customOauth2UserService)
                 .and().successHandler(successHandler)
