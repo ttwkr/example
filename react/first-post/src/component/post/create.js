@@ -13,7 +13,7 @@ const CreatePost = () => {
     )
 
     const changeForm = (e) => {
-        console.log(form)
+
         const {id, value} = e.target
         setForm({
             ...form,
@@ -22,7 +22,7 @@ const CreatePost = () => {
     }
 
     const submitForm = async () => {
-        console.log(form)
+
         await axios.post(
             "http://localhost:8080/api/v1/posts",
             form
